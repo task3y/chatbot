@@ -69,7 +69,7 @@ Before running this project, make sure you have:
 
 ## 📂 Project Structure
 ```
-ai-chatbot-gemini/
+chatbot/
 ├── public/
 │   ├── index.html
 │   └── favicon.ico
