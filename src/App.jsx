@@ -1,6 +1,10 @@
+import { useState } from "react";
 import ChatbotIcon from "./components/ChatbotIcon";
+import ChatForm from "./components/ChatForm";
+import ChatMessage from "./components/ChatMessage";
 
 const App = () => {
+  const [chatHistory, setChatHistory] = useState();
   return (
     <div className="container">
       <div className="chatbot-popup">
@@ -8,11 +12,10 @@ const App = () => {
           <div className="header-info">
             <ChatbotIcon />
             <h2 className="logo-text">Chatbot</h2>
-
           </div>
           <button className="material-symbols-rounded">
-keyboard_arrow_down
-</button>
+            keyboard_arrow_down
+          </button>
         </div>
         <div className="chat-body">
           <div className="message bot-message">
@@ -21,19 +24,13 @@ keyboard_arrow_down
               Hey there! <br /> How can I help you?
             </p>
           </div>
-          <div className="message user-message">
-            <p className="message-text">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod, voluptate.
-            </p>
-          </div>
+
+          {chatHistory.map((chat, index) => (
+            <ChatMessage key={index} chat={chat} />
+          ))}
         </div>
         <div className="chat-footer">
-           <form action="#" className="chat-form">
-            <input type="text" placeholder="Type a message..." className="message-input" required/>
-            <button className="material-symbols-rounded">arrow_upward
-</button>
-           </form>
-           
+          <ChatForm setChatHistory={setChatHistory} />
         </div>
       </div>
     </div>
